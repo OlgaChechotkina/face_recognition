@@ -1,5 +1,6 @@
 import os
 from collections import namedtuple
+from datetime import datetime
 
 import face_recognition
 
@@ -8,6 +9,8 @@ COMMON_FACE_PATH = './data/Common/'
 
 Face = namedtuple('Face', 'name encodings counter')
 faces = []
+
+print("START date and time =", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
 
 class FaceFile(object):
@@ -53,6 +56,7 @@ for face_file in unknown_face_files:
         except Exception:
             print('can not recognize any known face in {}'.format(face_file))
 
+print("FINISH date and time =", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 # print results
 for face in faces:
     print('{} {}'.format(face.name, face.counter))
